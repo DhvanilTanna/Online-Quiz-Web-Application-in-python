@@ -1,0 +1,37 @@
+<script type = "text/javascript" >  
+    function preventBack() { window.history.forward(); }  
+    setTimeout("preventBack()", 0);  
+    window.onunload = function () { null };  
+</script>
+
+{% extends "layout.html" %}
+{% block title%}
+Make Quiz
+{%endblock%}
+{% block body %}
+
+<div class="container d-flex">
+
+
+    <div class="card shadow mt-5   ">
+        <h1 class="card-header display- text-left">Create Quiz</h1>
+        <div class="card-body">
+
+            <form action="/upload" method="post" enctype="multipart/form-data">
+                <label for="time">Time in Minutes (between 1 and 120):</label>
+                <input type="number" id="time" name="time" min="1" max="120" required>
+                <p>Upload Excel File :
+                <p>
+                    <input type="file" name="file" id="file" required accept=".csv">
+                    <button class="btn btn-success upload">Upload</button>
+            </form>
+        </div>
+    </div>
+    <div class="image"><img src="{{ url_for('static',filename='img.jpg')}}" alt="" class="img-fluid "></div>
+</div>
+
+
+
+
+
+{% endblock %}
